@@ -1,0 +1,31 @@
+<h1>成績列表</h1>
+
+<%= link_to "新增學生", new_grade_path %>
+
+<h4>分數級別說明　90分以上：S級 / 80~89：A級 / 70~79：B級 / 69~69：C級 / 未滿60：D級</h4>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>姓名</td>
+      <td>學號</td>
+      <td>分數</td>
+      <td>處理</td>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @grades.each do |grade| %>
+      <tr>
+        
+        <td><%= grade.name %></td>
+        <td><%= grade.identity %></td>
+        <td><%= grade.score %></td>
+        
+        <td>
+        </td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
