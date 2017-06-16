@@ -1,9 +1,5 @@
 class GradesController < ApplicationController
-<<<<<<< HEAD
-  before_action :find_grade, only: [:show, :edit, :update]
-=======
   before_action :find_grade, only: [:show, :edit, :update, :destroy]
->>>>>>> finished create and edit function
   
   def index
     @grades = Grade.all
@@ -35,14 +31,11 @@ class GradesController < ApplicationController
     end    
   end
   
-<<<<<<< HEAD
-=======
   def destroy
     @grade.destroy
     redirect_to grades_path
   end
   
->>>>>>> finished create and edit function
   private
   def grade_params
     params.require("grade").permit(:name, :identity, :score)

@@ -1,2 +1,3 @@
 class Grade < ApplicationRecord
+  
 end

@@ -1,8 +1,8 @@
 <h1>成績列表</h1>
 
-<%= link_to "新增學生", new_grade_path %>
+<%= link_to "新增學生", new_grade_path, class: "btn btn-success btn-x" %>
 
-<h4>分數級別說明　90分以上：S級 / 80~89：A級 / 70~79：B級 / 69~69：C級 / 未滿60：D級</h4>
+<h4>分數級別說明：90分以上S / 80~89：A / 70~79：B級 / 69~69：C級 / 未滿60：D級</h4>
 
 <table class="table table-hover">
   <thead>
@@ -20,14 +20,27 @@
         
         <td><%= grade.name %></td>
         <td><%= grade.identity %></td>
-        <td><%= grade.score %></td>
+        <td><%= 
+            level = ""
+            if grade.score >= 0 && grade.score < 60 
+              level << "D 級("
+            elsif grade.score >= 60 && grade.score < 70
+              level << "C 級("
+            elsif grade.score >= 70 && grade.score < 80
+              level << "B 級("
+            elsif grade.score >= 80 && grade.score < 90
+              level << "A 級("
+            elsif grade.score >= 90
+              level << "S 級("
+            end
+            level << grade.score.to_s
+            level << ")"
+            level
+         %></td>
         
         <td>
-          <%= link_to "編輯", edit_grade_path(grade) %>
-<<<<<<< HEAD
-=======
-          <%= link_to "刪除", grade_path(grade), method: "delete", data: { confirm: "確認刪除" } %>
->>>>>>> finished create and edit function
+          <%= link_to "編輯", edit_grade_path(grade), class: "btn btn-success btn-xs" %>
+          <%= link_to "刪除", grade_path(grade), method: "delete", data: { confirm: "確認刪除" }, class: "btn btn-danger btn-xs" %>
         </td>
         
       </tr>
